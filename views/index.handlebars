@@ -15,18 +15,21 @@
           </div>
         </form>
       </div>
+      {{!-- 縮網址結果 --}}
       {{#if tinyURL}}
       <div id="tiny-results" class="d-flex justify-content-end align-items-center mt-5">
-        <div id="{{tinyURL}}" class="mx-2 p-5">{{tinyURL}}</div>
-        <button type="button" class="btn btn-primary" id="copy-url">複製縮網址</button>
+        <input class="mx-2 form-control shadow-none" id="tiny-url" type="text" value="{{tinyURL}}" readonly>
+        <button type="button" class="btn btn-primary" id="copy-url" value="{{tinyURL}}">複製縮網址</button>
       </div>
     </div>
+    <div id="prompt" class="d-flex justify-content-center align-items-center text-success"></div>
     {{/if}}
   </div>
 </div>
 
 
 <script>
+  //表單驗證
   (function () {
     'use strict'
 
@@ -46,4 +49,14 @@
         }, false)
       })
   })()
+  //複製縮網址
+  const tinyURL = document.getElementById('tiny-url')
+  const copyButton = document.getElementById('copy-url')
+  const prompt = document.getElementById('prompt')
+  copyButton.addEventListener('click', e => {
+    tinyURL.focus()
+    tinyURL.select()
+    document.execCommand("copy")
+    prompt.innerText = '複製成功'
+  })
 </script>
