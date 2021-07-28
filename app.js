@@ -33,7 +33,9 @@ app.post('/', (req, res) => {
     }
     // 取到獨一無二的縮網址，之後存到資料庫當中
     await Url.create({ url: url, tiny: pathname })
-      .then(() => res.send(url))
+      .then(() => {
+        res.render('index', { tinyURL: req.headers.host + '/' + pathname })
+      })
   }
   storeUrl()
 })
@@ -47,5 +49,4 @@ app.get('/:tinyUrl', (req, res) => {
     .then(data => res.redirect(data[0].url))
 })
 
-app.listen(PORT, () => console.log(`app is on http://${PORT}`))
-
+app.listen(PORT, () => console.log(`app is on http://localhost:${PORT}`))

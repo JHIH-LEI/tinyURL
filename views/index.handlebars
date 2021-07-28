@@ -1,18 +1,30 @@
-<div class="container-fluid p-5">
-  <h1 class="mb-3">縮網址產生器</h1>
-  <div class="input-group has-validation">
-    <form action="/" method="post" class="needs-validation" novalidate>
-      <label for="urlInput" class="form-label">網址：</label>
-      <input type="text" id="urlInput" name="url" class="form-control"
-        pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
-        placeholder="http://...." required>
-      <button type="submit" class="byn btn-secondary">立刻縮網址</button>
-      <div class="invalid-feedback">
-        請輸入有效網址
+<div class="d-flex">
+  <div class="container-fluid m-5 p-5 bg-light bg-gradient">
+    <div id="form" class="d-flex flex-wrap justify-content-center">
+      <h1 class="mb-3">縮網址產生器</h1>
+      <div class="input-group has-validation justify-content-center align-items-center">
+        <form action="/" method="post" class="needs-validation d-flex" novalidate>
+          <label for="urlInput"
+            class="d-flex form-label badge bg-primary text-wrap fw-lighter align-items-center m-1">網址</label>
+          <input type="text" id="urlInput" name="url" class="form-control"
+            pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+            placeholder="http://...." required>
+          <button type="submit" class="byn btn-secondary">立刻縮網址</button>
+          <div class="invalid-feedback">
+            請輸入有效網址
+          </div>
+        </form>
       </div>
-    </form>
+      {{#if tinyURL}}
+      <div id="tiny-results" class="d-flex justify-content-end align-items-center mt-5">
+        <div id="{{tinyURL}}" class="mx-2 p-5">{{tinyURL}}</div>
+        <button type="button" class="btn btn-primary" id="copy-url">複製縮網址</button>
+      </div>
+    </div>
+    {{/if}}
   </div>
 </div>
+
 
 <script>
   (function () {
