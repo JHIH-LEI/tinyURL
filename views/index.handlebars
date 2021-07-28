@@ -1,0 +1,37 @@
+<div class="container-fluid p-5">
+  <h1 class="mb-3">縮網址產生器</h1>
+  <div class="input-group has-validation">
+    <form action="post" class="needs-validation" novalidate>
+      <label for="urlInput" class="form-label">網址：</label>
+      <input type="text" id="urlInput" class="form-control"
+        pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+        required>
+      <button type="submit" class="byn btn-secondary">立刻縮網址</button>
+      <div class="invalid-feedback">
+        請輸入有效網址
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>
