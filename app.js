@@ -40,5 +40,12 @@ app.post('/', (req, res) => {
 
 // 處理縮網址請求
 // req 縮網址，回應對照原網址
+app.get('/:tinyUrl', (req, res) => {
+  const tinyUrl = req.params.tinyUrl
+  Url.find({ tiny: tinyUrl })
+    .lean()
+    .then(data => res.redirect(data[0].url))
+})
+
 app.listen(PORT, () => console.log(`app is on http://${PORT}`))
 
