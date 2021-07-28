@@ -1,11 +1,11 @@
 <div class="container-fluid p-5">
   <h1 class="mb-3">縮網址產生器</h1>
   <div class="input-group has-validation">
-    <form action="post" class="needs-validation" novalidate>
+    <form action="/" method="post" class="needs-validation" novalidate>
       <label for="urlInput" class="form-label">網址：</label>
-      <input type="text" id="urlInput" class="form-control"
+      <input type="text" id="urlInput" name="url" class="form-control"
         pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
-        required>
+        placeholder="http://...." required>
       <button type="submit" class="byn btn-secondary">立刻縮網址</button>
       <div class="invalid-feedback">
         請輸入有效網址
