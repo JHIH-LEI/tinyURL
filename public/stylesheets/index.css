@@ -1,0 +1,8 @@
+#tiny-results{
+   animation: fadein 1s ease;
+}
+
+@keyframes fadein {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
